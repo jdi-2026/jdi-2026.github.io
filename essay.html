@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Competition - JDI 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --accent: #d4af37;
+            --dark: #0f2818;
+            --light: #f8f6f1;
+            --text: #2c3e50;
+            --border: #e8e2d5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.7;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 0.6rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 1px;
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styling */
+        .section {
+            background: white;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--accent);
+            animation: fadeInUp 0.8s ease;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        .section-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .section-content ul, .section-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .highlight-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .highlight-box p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline Styling */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.6rem;
+            top: 0.3rem;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .timeline-item h4 {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Rules List */
+        .rules-list {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .rules-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rules-list li strong {
+            color: var(--primary);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+            background: #e8c14e;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item::before {
+                left: -2.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-area">
+                <!-- <div class="logo-placeholder">JDI</div> -->
+                <div class="site-title">JDI 2026</div>
+            </div>
+            <a href="index.html" class="back-btn">← Back to Main</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Essay Competition</h1>
+            <div class="hero-subtitle">From Research to Resilience: Shaping Indonesia's Future Together</div>
+            <div class="hero-subtitle"><a href="https://docs.google.com/forms/d/e/1FAIpQLSddBaJD8CdVz5Dasirzd1FMZaNUKHSFVW5nfesORgynzA5cQA/viewform?usp=sharing&ouid=101465276035888148016" class="cta-button">Click here to submit your essay</a>
+</div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <div style="background: white; border-bottom: 2px solid var(--border); position: sticky; top: 92px; z-index: 999; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 1rem 2rem; display: flex; gap: 1.5rem; overflow-x: auto; flex-wrap: wrap; justify-content: center;">
+            <a href="#prize" style="text-decoration: none; color: var(--accent); font-weight: 700; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap; background: var(--primary); color: white;">🏆 Prize</a>
+            <a href="#background" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📖 Background</a>
+            <a href="#purpose" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">🎯 Purpose</a>
+            <a href="#rules" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📋 Rules</a>
+            <a href="#topics" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📚 Topics</a>
+            <a href="#timeline" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📅 Timeline</a>
+            <a href="#criteria" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">✅ Criteria</a>
+        </div>
+    </div>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        div[style*="position: sticky"] a:hover {
+            background: var(--primary);
+            color: white !important;
+        }
+        div[style*="position: sticky"] a[href="#prize"]:hover {
+            background: var(--accent);
+            color: var(--dark) !important;
+        }
+    </style>
+
+    <div class="container">
+        <!-- Prize Announcement -->
+        <div id="prize" style="background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%); padding: 3rem; border-radius: 20px; text-align: center; margin-bottom: 3rem; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3); border: 3px solid var(--accent);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🏆</div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--dark); margin-bottom: 1rem;">Prize Pool: €100</h2>
+            <p style="font-size: 1.3rem; color: var(--dark); font-weight: 600; margin-bottom: 0.5rem;">Cash prizes for winning essays!</p>
+            <p style="font-size: 1.1rem; color: var(--text); background: white; display: inline-block; padding: 0.8rem 2rem; border-radius: 50px; margin-top: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <strong>*Eligibility:</strong> Undergraduate (S1) and Master's (S2) students only
+            </p>
+        </div>
+
+        <section class="section" id="background">
+            <h2 class="section-title">Background</h2>
+            <div class="section-content">
+                <p>In the midst of global uncertainty marked by climate crisis, geopolitical tensions, technological disruption, and social-economic instability, Indonesia faces increasingly complex and multidimensional development challenges. As a country with high biological and social diversity, Indonesia confronts various structural issues ranging from climate change and deforestation, clean water crisis, health access inequality, to social and economic disparities.</p>
+                <p>These conditions demand a development approach that not only focuses on sustainability but also strengthens resilience—the capacity of social, economic, and environmental systems to withstand, adapt, and recover from various challenges. Sustainability alone does not guarantee resilience; in an uncertain world, even sustainable systems can fail without adequate adaptive capacity and recovery mechanisms.</p>
+                <p>Indonesia Young Resilience Think Tank 2026 emerges as an intellectual space for Indonesian students in France to respond to Indonesia's development challenges through critical thinking, interdisciplinary approaches, and innovative solutions. This Call for Essay program serves as a platform for students to contribute ideas, analysis, and strategic recommendations while strengthening the role of academic diaspora in promoting Indonesia's sustainable and resilient development.</p>
+                <p>Selected essays will be compiled into a book of strategic thoughts, serving not only as academic documentation but also as a medium to deliver ideas to stakeholders, including government institutions, for reflection, discussion, and policy input.</p>
+            </div>
+        </section>
+
+        <div class="highlight-box">
+            <h3>Program Title</h3>
+            <p><strong>Indonesia Young Resilience Think Tank 2026: Problems, Insights, and Solutions from Indonesian Students in France for Indonesia</strong></p>
+            <p>This Call for Essay program provides an intellectual platform for Indonesian students in France to contribute strategic thinking towards Indonesia's sustainable and resilient development. Selected essays will be compiled into a book and delivered to stakeholders, including government institutions, as policy input.</p>
+        </div>
+
+        <section class="section" id="purpose">
+            <h2 class="section-title">Purpose</h2>
+            <div class="section-content">
+                <p>The Call for Essay program "Indonesia Young Resilience Think Tank 2026: Problems, Insights, and Solutions from Indonesian Students in France for Indonesia" aims to achieve the following objectives:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Produce intellectual output</strong> in the form of a compiled book of essays to be delivered to stakeholders, including government institutions, as material for reflection and policy input.</li>
+                    <li><strong>Strengthen intellectual networks</strong> among Indonesian students in France across different educational levels and disciplines.</li>
+                    <li><strong>Encourage strategic thinking contributions</strong> from the academic diaspora for Indonesia's development oriented towards sustainability and resilience.</li>
+                </ul>
+                <p style="margin-top: 1.5rem;">This program also serves as a platform for developing critical thinking capacity, analytical skills, and sensitivity to strategic issues in Indonesia's development, while mapping the quality of literacy and critical thinking among Indonesian students in responding to national and global challenges.</p>
+            </div>
+        </section>
+
+        <section class="section" id="rules">
+            <h2 class="section-title">Competition Rules</h2>
+            <div class="section-content">
+                <p>Participants must adhere to the following guidelines:</p>
+                <ul class="rules-list">
+                    <li><strong>Citizenship:</strong> Participants must be Indonesian Citizens (WNI).</li>
+                    <li><strong>Eligibility:</strong> Open to Indonesian undergraduate (S1), master's (S2), doctoral (S3) students, and postdoctoral researchers studying or conducting research in France.</li>
+                    <li><strong>Competition Categories:</strong> Essays from S1 and S2 students will be evaluated for prizes. Essays from S3 students and postdoctoral researchers can participate as thought contributions for the book compilation.</li>
+                    <li><strong>Word Limit:</strong> Maximum 2,000 words, excluding references.</li>
+                    <li><strong>Language:</strong> Essays should be written in Indonesian or English (please confirm preferred language).</li>
+                    <li><strong>Originality:</strong> All work must be original and demonstrate fresh perspectives, critical viewpoints, and innovative thinking.</li>
+                    <li><strong>Submission:</strong> Essays must be submitted through the official platform by the specified deadline.</li>
+                </ul>
+                <p style="margin-top: 1.5rem;"><strong>Target Participants:</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>Indonesian Undergraduate Students (S1)</li>
+                    <li>Indonesian Master's Students (S2)</li>
+                    <li>Indonesian Doctoral Students (S3)</li>
+                    <li>Indonesian Postdoctoral Researchers in France</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="topics">
+            <h2 class="section-title">Topics & Subtopics</h2>
+            <div class="section-content">
+                <p><strong>Main Theme:</strong> From Research to Resilience: Shaping Indonesia's Future Together</p>
+                <p>Participants can choose from the following topics and subtopics:</p>
+                
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">1. Economics</h3>
+                <ul>
+                    <li>Indonesia's Strategy Facing Global Crisis Risks (inflation, geopolitics, commodities)</li>
+                    <li>Digital Economy & MSMEs: Path to National Resilience</li>
+                    <li>Energy Independence: Renewable Energy Opportunities for Indonesia 2045</li>
+                    <li>Inclusive Finance and Fintech for Regional Economic Empowerment</li>
+                    <li>Strengthening National Supply Chains: Post-Pandemic Challenges and Solutions</li>
+                    <li>Building Indonesia's Economic Resilience in the Era of Global Uncertainty</li>
+                    <li>Manufacturing Industry Transformation & Smart Factory 4.0</li>
+                </ul>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">2. Politics</h3>
+                <ul>
+                    <li>Disinformation Threats & Ways to Strengthen Indonesia's Democratic Resilience</li>
+                    <li>ASEAN Regional Geopolitics: Indonesia's Position in a Rapidly Changing World</li>
+                    <li>Bureaucratic Reform: From Efficiency to Adaptive and Resilient Systems</li>
+                    <li>Towards More Integrated and Responsive Disaster Governance</li>
+                    <li>Building Resilient Governance through Digitalization and Transparency</li>
+                    <li>Diaspora's Role in Public Diplomacy and Indonesia's Soft Power</li>
+                </ul>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">3. Social</h3>
+                <ul>
+                    <li>Youth Mental Health: Adaptive Challenges and Steps in the Digital Era</li>
+                    <li>Educational Access Inequality: Solutions for Indonesia's Golden Generation 2045</li>
+                    <li>Gender Equality & Economic Opportunities for Indonesian Women</li>
+                    <li>Changing Work Patterns: Remote Working and the Future of Indonesia's Workforce</li>
+                    <li>Urbanization & the Future of Indonesian Cities</li>
+                    <li>Opportunities and Challenges for Indonesian Migrant Workers in the Global System</li>
+                </ul>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">4. Culture</h3>
+                <ul>
+                    <li>Cultural Preservation in the Digital Era: How to Maintain Indonesian Identity?</li>
+                    <li>Creative Economy: Arts, Music, Film, and Culinary as Engines of Social Resilience</li>
+                    <li>Indonesian Language on the International Stage: Prospects and Promotion Strategies</li>
+                    <li>Local Culture as a Source of Solutions for Community Resilience</li>
+                    <li>Indonesia's Heritage for the World: Cultural Diplomacy and National Branding</li>
+                </ul>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">5. Science & Technology</h3>
+                <ul>
+                    <li>Artificial Intelligence (AI) for National Development: Risks & Opportunities</li>
+                    <li>Clean Energy Technology & Strategy Towards Indonesia's Net-Zero Emission</li>
+                    <li>Scientific Innovation by Indonesian Nationals: From Laboratory to National Industry</li>
+                    <li>Data Revolution: Big Data & Machine Learning for Public Policy</li>
+                    <li>Indonesia's Cyber Resilience: Fortifying Strategic Digital Infrastructure</li>
+                    <li>Biotechnology for Food and Health</li>
+                    <li>5G-6G Infrastructure Development</li>
+                    <li>Indonesian Space Research</li>
+                </ul>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">6. Environment</h3>
+                <ul>
+                    <li>Climate Crisis and Indonesia's Resilience to Natural Disasters</li>
+                    <li>Circular Economy and the Future of Waste Management</li>
+                    <li>Balancing Ecology and Food Security</li>
+                    <li>The Future of Nusantara Capital City (IKN): Smart, Green, and Resilient City?</li>
+                </ul>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">7. Education</h3>
+                <ul>
+                    <li>Link & Match Education-Industry: Reducing National HR Gap</li>
+                    <li>The Role of Diaspora Students in Knowledge and Technology Transfer</li>
+                    <li>Soft Skills and Resilience Skills for the Future Workforce</li>
+                    <li>Building an Adaptive Generation: STEM Education Reform in Indonesia</li>
+                </ul>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">8. Innovation & Future</h3>
+                <ul>
+                    <li>Future Technologies (AI, Quantum, Robotics): What Should Indonesia Prepare?</li>
+                    <li>Indonesia 2045: Future Scenarios and National Strategic Directions</li>
+                    <li>Indonesian Start-ups: From Resilience to Global Sustainability</li>
+                    <li>Blue Economy Opportunities for Indonesia</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="timeline">
+            <h2 class="section-title">Timeline</h2>
+            <div class="section-content">
+                <p>Please mark these important dates in your calendar:</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Essay Submission Period (First Deadline)</h4>
+                        <p><strong>January 19 – March 8, 2025</strong><br>Initial submission period for all essay entries. Authors are encouraged to submit their work during this phase.</p>
+                    </div>
+                    <!-- <div class="timeline-item">
+                        <h4>Extended Submission Period</h4>
+                        <p><strong>March 8 – March 29, 2025</strong><br>Extended deadline for essay submissions. This is the final opportunity to submit your work.</p>
+                    </div> -->
+                    <div class="timeline-item">
+                        <h4>Selection and Evaluation Phase</h4>
+                        <p><strong>March 29 – April 12, 2025</strong><br>Editorial and curatorial team reviews all submitted essays and conducts evaluation based on established criteria.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Interview & Clarification</h4>
+                        <p><strong>April 12 – April 25, 2025</strong><br>Selected authors may be contacted for interviews or clarification regarding their essay content and substance.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Winner Announcement</h4>
+                        <p><strong>May 2, 2025</strong><br>Official announcement of winners and selected essays during the JDI 2026 workshop at KBRI Paris.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="criteria">
+            <h2 class="section-title">Evaluation Criteria</h2>
+            <div class="section-content">
+                <p>Essays will be evaluated based on the following general criteria:</p>
+                
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">1. Relevance to Theme</h3>
+                <p>Alignment of essay content with the Indonesia Young Resilience Think Tank 2026 theme and its connection to sustainability and resilience issues.</p>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">2. Originality of Ideas</h3>
+                <p>Demonstrates fresh ideas, critical perspectives, and innovative thinking contributions.</p>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">3. Depth of Analysis</h3>
+                <p>Author's ability to examine issues comprehensively, based on data, literature, and/or relevant empirical experience.</p>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">4. Structure and Logic</h3>
+                <p>Clarity of essay structure, coherent flow of thought, and integration between sections of the writing.</p>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">5. Argument Clarity and Proposed Solutions</h3>
+                <p>Consistency of arguments, strength of justification, and relevance and feasibility of proposed solutions or recommendations.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Key Performance Indicators</h2>
+            <div class="section-content">
+                <p>The success of the Indonesia Young Resilience Think Tank 2026 Call for Essay program will be measured through the following indicators:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Number of Essays Received:</strong> Target minimum of 20 essays submitted by undergraduate (S1) and master's (S2) students.</li>
+                    <li><strong>Cross-Level and Cross-Disciplinary Participation:</strong> Reflected through participation from S1, S2 students, as well as thought contributions from S3 students and postdoctoral researchers.</li>
+                    <li><strong>Number of Selected Essays for Publication:</strong> Intellectual output of the program in the form of the Indonesia Young Resilience Think Tank 2026 compilation book.</li>
+                    <li><strong>Dissemination of Results:</strong> Distribution of the book to relevant stakeholders, including government institutions, as material for reflection and policy input.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">Ready to Participate?</h2>
+            <div style="background: linear-gradient(135deg, var(--accent) 0%, #f4e4c1 100%); padding: 1.5rem; border-radius: 15px; margin: 1.5rem auto; max-width: 600px; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);">
+                <p style="font-size: 1.4rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">🏆 Prize Pool: €100</p>
+                <p style="font-size: 1rem; color: var(--text);">For undergraduate and master's students</p>
+            </div>
+            <p style="font-size: 1.2rem; color: var(--text); margin-bottom: 2rem;">Submit your essay and be part of shaping Indonesia's future!</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSddBaJD8CdVz5Dasirzd1FMZaNUKHSFVW5nfesORgynzA5cQA/viewform?usp=sharing&ouid=101465276035888148016" class="cta-button">Register Now</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 JDI Workshop - Essay Competition. All rights reserved.</p>
+        <p>Organized in collaboration with PPI Paris</p>
+    </footer>
+</body>
+</html>
