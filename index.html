@@ -1,770 +1,715 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>From research to resilience — KBRI Paris | 5 April 2026</title>
-  <meta name="description" content="Konferensi multidisiplin untuk S3 Indonesia di Prancis: dari riset ke resiliensi, membentuk masa depan Indonesia bersama." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg: #070A12;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.08);
-      --border: rgba(255,255,255,.14);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.55);
-      --shadow: 0 12px 40px rgba(0,0,0,.45);
-      --radius: 18px;
-
-      --a: #7C3AED; /* purple */
-      --b: #22C55E; /* green */
-      --c: #06B6D4; /* cyan */
-      --d: #F59E0B; /* amber */
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(124,58,237,.45), transparent 55%),
-        radial-gradient(900px 600px at 110% 10%, rgba(34,197,94,.35), transparent 55%),
-        radial-gradient(800px 500px at 50% 120%, rgba(6,182,212,.25), transparent 55%),
-        linear-gradient(180deg, #050713 0%, #070A12 45%, #050713 100%);
-      overflow-x:hidden;
-    }
-
-    a{color:inherit}
-    .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-    .grid{display:grid;gap:18px}
-    .row{display:flex;gap:14px;flex-wrap:wrap}
-
-    /* Navbar */
-    .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(7,10,18,.78), rgba(7,10,18,.45));
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .logo{
-      width:38px;height:38px;border-radius:12px;
-      background:
-        radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.65), transparent 65%),
-        conic-gradient(from 140deg, var(--a), var(--c), var(--b), var(--a));
-      box-shadow: 0 10px 30px rgba(124,58,237,.25);
-      border:1px solid rgba(255,255,255,.15);
-    }
-    .brand b{font-size:14px;letter-spacing:.2px}
-    .brand span{display:block;font-size:12px;color:var(--muted2);margin-top:2px}
-
-    .nav-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-    .chip{
-      font-size:12.5px;color:var(--muted);
-      padding:8px 10px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      text-decoration:none;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    }
-    .chip:hover{transform:translateY(-1px);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
-
-    /* Hero */
-    .hero{padding:44px 0 26px}
-    .hero-card{
-      border-radius:26px;
-      background:
-        radial-gradient(600px 300px at 20% 30%, rgba(124,58,237,.35), transparent 60%),
-        radial-gradient(500px 260px at 80% 40%, rgba(34,197,94,.22), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
-      padding:26px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:12px;color:rgba(255,255,255,.86);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.16);
-      padding:8px 10px;border-radius:999px;
-    }
-    .dot{width:8px;height:8px;border-radius:999px;background:var(--c);box-shadow:0 0 0 4px rgba(6,182,212,.20)}
-    h1{
-      margin:10px 0 8px;
-      font-size: clamp(30px, 4vw, 46px);
-      line-height:1.08;
-      letter-spacing:-.6px;
-    }
-    .subtitle{color:var(--muted);max-width:72ch;font-size:15.5px;line-height:1.65;margin:0 0 18px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 14px;border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color:rgba(255,255,255,.92);
-      text-decoration:none;font-weight:700;font-size:13.5px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    }
-    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22)}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(6,182,212,.80));
-      border:1px solid rgba(255,255,255,.20);
-      box-shadow: 0 14px 40px rgba(124,58,237,.18);
-    }
-    .btn.primary:hover{filter:saturate(1.05)}
-    .btn small{font-weight:600;color:rgba(255,255,255,.80)}
-    .hero-mini{
-      display:grid;
-      grid-template-columns: 1.3fr .7fr;
-      gap:16px;margin-top:18px;
-    }
-    .kpi{
-      border-radius:18px;border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      padding:14px;
-      display:flex;flex-direction:column;gap:6px;
-    }
-    .kpi b{font-size:14px}
-    .kpi span{color:var(--muted2);font-size:12.5px;line-height:1.5}
-    .kpi .tag{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:12px;color:rgba(255,255,255,.84);
-      margin-top:6px
-    }
-    .spark{width:10px;height:10px;border-radius:999px;background:var(--b);box-shadow:0 0 0 4px rgba(34,197,94,.18)}
-
-    /* Sections */
-    section{padding:24px 0}
-    .section-title{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
-      margin:4px 0 14px;
-    }
-    .section-title h2{
-      margin:0;font-size:20px;letter-spacing:-.25px
-    }
-    .section-title p{margin:0;color:var(--muted2);font-size:13px;max-width:60ch}
-
-    .card{
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      box-shadow: 0 12px 30px rgba(0,0,0,.28);
-      padding:18px;
-    }
-    .card.soft{
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-    }
-    .two{display:grid;grid-template-columns: 1.1fr .9fr;gap:18px}
-    .three{display:grid;grid-template-columns: repeat(3, 1fr);gap:18px}
-    .four{display:grid;grid-template-columns: repeat(4, 1fr);gap:14px}
-
-    .pill{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 12px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      color:rgba(255,255,255,.86);
-      font-size:12.5px;
-      margin: 6px 8px 0 0;
-    }
-    .pill i{
-      width:10px;height:10px;border-radius:999px;display:inline-block;
-      background: var(--a); box-shadow: 0 0 0 4px rgba(124,58,237,.18);
-    }
-    .pill.green i{background:var(--b); box-shadow: 0 0 0 4px rgba(34,197,94,.18)}
-    .pill.cyan i{background:var(--c); box-shadow: 0 0 0 4px rgba(6,182,212,.18)}
-    .pill.amber i{background:var(--d); box-shadow: 0 0 0 4px rgba(245,158,11,.18)}
-
-    /* Table */
-    table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.12)}
-    th,td{padding:12px 12px;border-bottom:1px solid rgba(255,255,255,.10);vertical-align:top}
-    th{
-      text-align:left;font-size:12px;color:rgba(255,255,255,.88);
-      background: rgba(255,255,255,.06);
-      letter-spacing:.25px
-    }
-    td{color:rgba(255,255,255,.84);font-size:13px;line-height:1.5}
-    tr:last-child td{border-bottom:none}
-    .time{white-space:nowrap;color:rgba(255,255,255,.78);font-variant-numeric:tabular-nums}
-    .tagline{color:var(--muted2);font-size:12.5px;margin-top:6px}
-
-    /* Timeline list */
-    .timeline{display:flex;flex-direction:column;gap:10px}
-    .t-item{
-      display:flex;gap:12px;align-items:flex-start;
-      padding:12px;border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    .t-dot{
-      width:12px;height:12px;border-radius:999px;background:var(--c);
-      box-shadow:0 0 0 6px rgba(6,182,212,.14);
-      margin-top:4px;flex:0 0 auto;
-    }
-    .t-item b{display:block;font-size:13.5px}
-    .t-item span{display:block;color:var(--muted2);font-size:12.5px;line-height:1.55;margin-top:4px}
-
-    /* Organizer cards */
-    .person{display:flex;gap:12px;align-items:center}
-    .avatar{
-      width:42px;height:42px;border-radius:14px;
-      background: linear-gradient(135deg, rgba(124,58,237,.9), rgba(34,197,94,.55));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 28px rgba(124,58,237,.18);
-      flex:0 0 auto;
-    }
-    .person b{font-size:13.5px}
-    .person small{display:block;color:var(--muted2);margin-top:2px}
-
-    /* Callout */
-    .callout{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.14);
-      background:
-        radial-gradient(420px 240px at 20% 40%, rgba(34,197,94,.18), transparent 60%),
-        radial-gradient(420px 240px at 80% 40%, rgba(124,58,237,.22), transparent 60%),
-        rgba(255,255,255,.05);
-      padding:16px;
-    }
-    .callout b{display:block;font-size:14px;margin-bottom:6px}
-    .callout p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
-
-    /* Map */
-    .map{
-      width:100%;
-      aspect-ratio: 16/10;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:18px;
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-    }
-    iframe{border:0;width:100%;height:100%}
-
-    /* Footer */
-    footer{padding:26px 0 34px;color:var(--muted2);font-size:12.5px}
-    .footer-grid{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .tiny{font-size:12px;color:rgba(255,255,255,.52)}
-    .sep{height:1px;background:rgba(255,255,255,.10);margin:18px 0}
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .two{grid-template-columns:1fr}
-      .three{grid-template-columns:1fr}
-      .four{grid-template-columns:1fr 1fr}
-      .hero-mini{grid-template-columns:1fr}
-      .nav-links{display:none}
-    }
-    @media (max-width: 520px){
-      .four{grid-template-columns:1fr}
-      .hero-card{padding:18px}
-      .btn{width:100%}
-    }
-
-    .logo-img {
-      height: 40px; /* Adjust height to match your text size */
-      width: auto;  /* Maintains aspect ratio */
-      display: block;
-    }
-
-    /* Smooth scroll */
-    html{scroll-behavior:smooth}
-  </style>
-</head>
-
-<body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="wrap">
-      <div class="nav-inner">
-        <a class="brand" href="#top">
-          <img src="jdi2026.png" alt="JDI Logo" class="logo-img">
-          
-          <div>
-            <b>Journée des Doctorants Indonésiens (JDI)</b>
-            <span>KBRI Paris • XXX April 2026</span>
-          </div>
-        </a>
-        <div class="nav-links">
-          <a class="chip" href="#tentang">Tentang</a>
-          <a class="chip" href="#agenda">Agenda</a>
-          <a class="chip" href="#submisi">Submisi</a>
-          <a class="chip" href="#deadlines">Deadline</a>
-          <a class="chip" href="#organizer">Organizer</a>
-          <a class="chip" href="#lokasi">Lokasi</a>
-          <!-- <a class="chip" href="#misc">Transport & Akomodasi</a> -->
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- HERO -->
-  <div id="top" class="hero">
-    <div class="wrap">
-      <div class="hero-card">
-        <div class="hero-badges">
-          <div class="badge"><span class="dot"></span> Konferensi Multidisiplin • S3 Indonesia di Prancis</div>
-          <div class="badge">📍 KBRI Paris</div>
-          <div class="badge">🗓️ XXX, XXX April 2026</div>
-        </div>
-
-        <h1>From research to resilience: <br>shaping Indonesia’s future together</h1>
-<!-- 
-        <p class="subtitle">
-          Forum ilmiah untuk mempertemukan peneliti Indonesia lintas disiplin di Prancis—dari
-          <b>riset fundamental</b> hingga <b>solusi nyata</b>—mendorong ketahanan (resilience) Indonesia dalam menghadapi
-          tantangan kesehatan, lingkungan, energi, keamanan, dan transformasi digital.
-          <span class="tagline">
-            Fokus: kolaborasi, transfer pengetahuan, dan dampak kebijakan/industri tanpa mengorbankan rigor akademik.
-          </span>
-        </p> -->
-
-        <div class="cta">
-          <a class="btn primary" href="#submisi" id="btnSubmit">
-            📄 Submit paper
-            <small>(Call for Papers)</small>
-          </a>
-          <a class="btn" href="#agenda">🧭 Agenda</a>
-          <a class="btn" href="#lokasi">🗺️ Lokasi</a>
-        </div>
-<!-- 
-        <div class="hero-mini">
-          <div class="kpi">
-            <b>Untuk siapa?</b>
-            <span>
-              Mahasiswa S3 Indonesia di Prancis
-            </span>
-            <div class="tag"><span class="spark"></span> Multidisiplin, namun tetap terkurasi & fokus dampak</div>
-          </div>
-          <div class="kpi">
-            <b>Apa output-nya?</b>
-            <span>
-              Presentasi paper, diskusi panel, sesi poster/networking, dan peluang kolaborasi lintas lab.
-            </span>
-            <div class="tag"><span class="spark" style="background:var(--d);box-shadow:0 0 0 4px rgba(245,158,11,.18)"></span> Best Paper / Best Poster (opsional)</div>
-          </div>
-        </div> -->
-      </div>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <section id="tentang">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Tentang Konferensi</h2>
-        <!-- <p>Riset yang kuat + kolaborasi yang tepat = resiliensi yang terukur.</p> -->
-      </div>
-
-      <div class="two">
-        <div class="card soft">
-          <div class="callout">
-            <b>Deskripsi</b>
-            <p>
-              “From research to resilience” adalah konferensi 2 hari yang mempertemukan
-              komunitas S3 Indonesia di Prancis untuk berbagi riset terbaru dan merumuskan
-              arah kolaborasi lintas disiplin. Kami percaya setiap riset dari teori fundamental hingga aplikasi praktis adalah potongan puzzle yang krusial untuk membangun ketahanan Indonesia yang lebih kuat dan adaptif. 
-            </p>
-          </div>
- 
-          <div class="sep"></div>
-          <b style="font-size:14px">Format acara</b>
-          <p style="margin:10px 0 0;color:var(--muted);line-height:1.7;font-size:13.5px">
-            XXXX
-          </p>
-        </div>
-
-        <div class="card">
-          
-          <b style="font-size:14px">Submisi via OpenReview</b>
-          <p style="margin:10px 0 0;color:var(--muted);line-height:1.7;font-size:13.5px">
-            Semua pengiriman naskah dilakukan melalui OpenReview agar transparan, terstruktur, dan mudah dilacak. <br> Link Submisi: <a href="https://openreview.net/" target="_blank" rel="noopener">XXX</a>
-          </p>
-
-           <div class="sep"></div>
-
-             <b style="font-size:14px">Aturan Call for Papers</b>
-            <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.75; font-size:13.5px">
-              <li><b>Panjang naskah:</b> 3–4 halaman (termasuk referensi). Referensi bebas panjangnya.</li>
-              <li><b>Bahasa:</b> Indonesia.</li>
-              <li><b>Format:</b> XXX</li>
-            </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section id="submisi">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Call for Papers & Subtopik</h2>
-        <!-- <p>Distribusi bidang studi multidisiplin dari riset hingga resiliensi.</p> -->
-      </div>
-
-      <div class="two">
-        <div class="card soft">
-          <div class="grid" style="grid-template-columns:1fr;gap:10px">
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--c)"></div>
-              <div>
-                <b>AI, Data Science, dan Komputasi Cerdas</b>
-                <span>AI, Machine Learning, Computer Science, Statistics, Data Science, Informatique, MLOps.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--b)"></div>
-              <div>
-                <b>Fotonika, Optoelektronika, dan Telekomunikasi</b>
-                <span>Optoelectronics, Photonics, Telecommunication, Micro-ondes, Nanoélectronique, Sensor, Fisika.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--a)"></div>
-              <div>
-                <b>Marine Science dan Oseanografi Fisik</b>
-                <span>Oceanography, Physical Oceanography, Paleoclimatology, Geology, Marine Science.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--d)"></div>
-              <div>
-                <b>Ekologi, Biodiversitas, dan Konservasi Alam</b>
-                <span>Ecologie et Biodiversite, Marine Biology, Entomology, Biologi, Virology, Ekotoksikologi.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--c)"></div>
-              <div>
-                <b>Teknik Material dan Manufaktur</b>
-                <span>Nanomaterials, Fisika Material, Engineering Science, Teknik Industri, Automatique.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--b)"></div>
-              <div>
-                <b>Kimia Analitik, Komputasi, dan Bioproses</b>
-                <span>Kimia, Analytical Chemistry, Computational Chemistry, Bioprocess Engineering.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card soft">
-          <div class="grid" style="grid-template-columns:1fr;gap:10px">
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--a)"></div>
-              <div>
-                <b>Kesehatan Masyarakat dan Biostatistika</b>
-                <span>Santé publique, Epidemiology, Biostatistiques, Public Health.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--d)"></div>
-              <div>
-                <b>Farmakologi dan Penemuan Obat</b>
-                <span>Pharmacology (Drugs Discovery), Virology, Medicinal Chemistry, Biotechnology.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--c)"></div>
-              <div>
-                <b>Psikologi Sosial dan Perilaku</b>
-                <span>Psikologi Sosial, Transport Psychology, Human Geography.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--b)"></div>
-              <div>
-                <b>Manajemen, Ekonomi, dan Finansial</b>
-                <span>Management (Lifestyle, Marketing, Culture), Finance, Industrial Engineering.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--a)"></div>
-              <div>
-                <b>Arsitektur, Lingkungan, dan Wilayah</b>
-                <span>Arsitektur, Resource Management, Environment, Human Geography.</span>
-              </div>
-            </div>
-
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--d)"></div>
-              <div>
-                <b>Filologi, Arkeologi, dan Warisan Budaya</b>
-                <span>Philology, Archaeologie, Culture, Sejarah & Identitas Nasional.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- DEADLINES -->
-  <section id="deadlines">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Deadline Schedules</h2>
-      </div>
-
-      <div class="two">
-        <div class="card soft">
-          <div class="timeline">
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--a)"></div>
-              <div>
-                <b>OpenReview dibuka</b>
-                <span>TODO: XXX</span>
-              </div>
-            </div>
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--c)"></div>
-              <div>
-                <b>Deadline submisi</b>
-                <span>TODO: XXX (23:59 CET)</span>
-              </div>
-            </div>
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--b)"></div>
-              <div>
-                <b>Notifikasi hasil review</b>
-                <span>TODO: XXX</span>
-              </div>
-            </div> 
-            <div class="t-item">
-              <div class="t-dot" style="background:var(--c)"></div>
-              <div>
-                <b>Hari-H</b>
-                <span>XXX</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <b style="font-size:14px">Catatan</b>
-          <p style="margin:10px 0 0;color:var(--muted);line-height:1.75;font-size:13.5px">
-            Timeline di samping dibuat agar cukup longgar untuk review & persiapan perjalanan. Jika ada kendala, harap hubungi admin: doctorants.indonesien@gmail.com
-          </p>
-          <div class="sep"></div> 
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AGENDA -->
-  <section id="agenda">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Time Table • 5 April 2026</h2>
-      </div>
-
-      <div class="card soft">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:120px">Waktu</th>
-              <th>Agenda</th>
-              <th style="width:240px">Catatan</th>
-            </tr>
-          </thead>
-          <tbody> 
-            <tr>
-              <td class="time">13:15–14:00</td>
-              <td><b>Panel: TBA</span></td>
-              <td>Moderator: TBA</td>
-            </tr> 
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ORGANIZERS -->
-  <section id="organizer">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Organizer</h2>
-      </div>
-
-      <div class="four">
-        <div class="card">
-          <div class="person">
-            <div class="avatar" aria-hidden="true"></div>
-            <div>
-              <b>Lukman Hendrajaya</b>
-              <small>Program Chair</small>
-            </div>
-          </div>
-          <div class="sep"></div>
-          <!-- <div class="tiny">Kontak: email@domain.tld (TODO)</div> -->
-        </div>
-
-        <div class="card">
-          <div class="person">
-            <div class="avatar" aria-hidden="true" style="background:linear-gradient(135deg, rgba(6,182,212,.9), rgba(245,158,11,.55))"></div>
-            <div>
-              <b>Benedictus Kent Rachmat</b>
-              <small>Program Chair • Université Paris-Saclay</small>
-            </div>
-          </div>
-          <div class="sep"></div>
-          <!-- <div class="tiny">Topik: CFP, review, seleksi</div> -->
-        </div>
-
-        <div class="card">
-          <div class="person">
-            <div class="avatar" aria-hidden="true" style="background:linear-gradient(135deg, rgba(34,197,94,.85), rgba(124,58,237,.55))"></div>
-            <div>
-              <b>Rischa Maya Oktavia</b>
-              <small>Program Chair</small>
-            </div>
-          </div>
-          <div class="sep"></div>
-          <!-- <div class="tiny">Topik: tempat, registrasi, rundown</div> -->
-        </div>
-
-        <div class="card">
-          <div class="person">
-            <div class="avatar" aria-hidden="true" style="background:linear-gradient(135deg, rgba(245,158,11,.9), rgba(6,182,212,.55))"></div>
-            <div>
-              <b>Nining Sumawati Asri</b>
-              <small>Program Chair</small>
-            </div>
-          </div>
-          <div class="sep"></div>
-          <!-- <div class="tiny">Topik: sponsor, partnership, media</div> -->
-        </div>
-
-        <div class="card">
-          <div class="person">
-            <div class="avatar" aria-hidden="true" style="background:linear-gradient(135deg, rgba(245,158,11,.9), rgba(6,182,212,.55))"></div>
-            <div>
-              <b>Abdul Hawil Abas</b>
-              <small>Program Chair</small>
-            </div>
-          </div>
-          <div class="sep"></div>
-          <!-- <div class="tiny">Topik: sponsor, partnership, media</div> -->
-        </div>
-
-        <div class="card">
-          <div class="person">
-            <div class="avatar" aria-hidden="true" style="background:linear-gradient(135deg, rgba(245,158,11,.9), rgba(6,182,212,.55))"></div>
-            <div>
-              <b>Kevin</b>
-              <small>Program Chair</small>
-            </div>
-          </div>
-          <div class="sep"></div>
-          <!-- <div class="tiny">Topik: sponsor, partnership, media</div> -->
-        </div>
-      </div>
-    </div>
-
-    
-  </section>
-
-  <!-- LOCATION -->
-  <section id="lokasi">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Lokasi</h2>
-      </div>
-
-      <div class="two">
-        <div class="card soft">
-          <b style="font-size:14px">KBRI Paris</b>
-          <p style="margin:10px 0 0;color:var(--muted);line-height:1.75;font-size:13.5px">
-            <b>Alamat:</b> 47 Rue Cortambert, 75116 Paris
-            <br><b>Catatan kedatangan:</b> datang 20–30 menit lebih awal untuk registrasi.
-          </p>
-          <div class="sep"></div>
-          <div class="callout">
-            <b>Map</b>
-            <p>Gunakan peta di samping untuk navigasi. Jika embed tidak tampil, klik “Open in Maps”.</p>
-            <p style="margin-top:10px">
-              <a class="btn" href="https://www.google.com/maps?q=Embassy+of+Indonesia+Paris" target="_blank" rel="noopener">🧭 Open in Maps</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="map" aria-label="Peta KBRI Paris">
-          <!-- Embed sederhana berbasis query; bisa diganti dengan embed resmi dari Google Maps -->
-          <iframe
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Embassy%20of%20Indonesia%20Paris&output=embed">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-  <!-- FOOTER -->
-  <footer>
-    <div class="wrap">
-      <div class="sep"></div>
-      <div class="footer-grid">
-        <div>
-          <b style="display:block;font-size:13px;color:rgba(255,255,255,.78)">From Research to Resilience • XXX April 2026</b>
-        </div>
-        <div class="tiny">
-          © 2026 • Panitia Konferensi • Kontak: doctorants.indonesien@gmail.com
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // TODO: ganti ini dengan link OpenReview venue konferensi kamu
-    const OPENREVIEW_LINK = "https://openreview.net/";
-
-    document.getElementById("btnSubmit").setAttribute("href", OPENREVIEW_LINK);
-
-    // Highlight section in URL hash (simple UX)
-    const chips = document.querySelectorAll(".chip");
-    const onScroll = () => {
-      const ids = ["tentang","agenda","submisi","deadlines","organizer","lokasi","misc"];
-      let current = "top";
-      for (const id of ids){
-        const el = document.getElementById(id);
-        if(!el) continue;
-        const r = el.getBoundingClientRect();
-        if (r.top < 120) current = id;
-      }
-      chips.forEach(c => c.style.borderColor = "rgba(255,255,255,.10)");
-      chips.forEach(c => {
-        const href = (c.getAttribute("href") || "").replace("#","");
-        if(href === current){
-          c.style.borderColor = "rgba(255,255,255,.28)";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDI 2026 - From Research to Resilience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --accent: #d4af37;
+            --dark: #0f2818;
+            --light: #f8f6f1;
+            --text: #2c3e50;
+            --border: #e8e2d5;
         }
-      });
-    };
-    window.addEventListener("scroll", onScroll, {passive:true});
-    onScroll();
-  </script>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.7;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-btn:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: var(--accent);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            animation: slideDown 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Add pseudo-element to bridge the gap */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 0.5rem;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--primary);
+            color: white;
+            padding-left: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .hero-date {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-location {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Banner Image */
+        .banner-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark);
+            border-top: 4px solid var(--accent);
+            border-bottom: 4px solid var(--accent);
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Content Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        /* Agenda Grid */
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .agenda-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .agenda-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .agenda-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .agenda-card .time {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: white;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .team-member h4 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-member .role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .team-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Essay CTA */
+        .essay-cta {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 4rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .essay-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .essay-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 1rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .essay-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+            background: #e8c14e;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .agenda-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-area">
+                <!-- <div class="logo-placeholder">JDI</div> -->
+                <div class="site-title">JDI 2026</div>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <a href="essay.html" class="dropdown-btn" style="text-decoration: none; display: inline-block;">📝 Essay Competition</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Past JDIs ▾</button>
+                    <div class="dropdown-content">
+                        <a href="https://sandbox.getindico.io/event/4531/">JDI 2025</a>
+                        <a href="#jdi2024">JDI 2024</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Workshop 2026</div>
+            <h1>From Research to Resilience:<br>Shaping Indonesia's Future Together</h1>
+            <div class="hero-date">2-3 May 2026</div>
+            <div class="hero-location">KBRI Paris, France</div>
+        </div>
+    </section>
+
+    <div class="banner-image">
+        [Workshop Banner Image Placeholder]
+    </div>
+
+    <!-- Quick Navigation -->
+    <div style="background: white; border-bottom: 2px solid var(--border); position: sticky; top: 92px; z-index: 999; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; gap: 2rem; overflow-x: auto; flex-wrap: wrap; justify-content: center;">
+            <a href="#background" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📖 Background</a>
+            <a href="#purpose" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">🎯 Purpose</a>
+            <a href="#participants" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">👥 Participants</a>
+            <a href="#agenda" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📅 Agenda</a>
+            <a href="#speakers" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">🎤 Speakers</a>
+            <a href="#team" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">👨‍💼 Team</a>
+        </div>
+    </div>
+
+    <style>
+        div[style*="position: sticky"] a:hover {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+
+    <div class="container">
+        <section class="section" id="background">
+            <h2 class="section-title">Background</h2>
+            <div class="section-content">
+                <p>In an increasingly uncertain world marked by climate crisis, global geopolitical tensions, technological disruption, and social-economic instability, Indonesia's development challenges have become more complex. As a nation with high biological and social diversity, Indonesia faces various structural problems ranging from climate change, deforestation, clean water crisis, health access inequality, to socio-economic disparities.</p>
+                <p>These challenges demand a development approach that focuses not only on long-term sustainability but also on strengthening national resilience—the ability to withstand, adapt, and recover from various shocks, both from national and global dynamics. Sustainability does not always guarantee resilience; in an uncertain world, even sustainable systems can collapse without adaptive capacity and crisis recovery mechanisms.</p>
+                <p>Doctoral education in France provides Indonesian students with better access to interdisciplinary approaches, cutting-edge technology, and international collaboration that can drive sustainable solutions for Indonesia. Moreover, studying in France teaches different approaches, especially in cross-disciplinary collaboration and practical problem-solving, which are highly relevant for bringing change to Indonesia.</p>
+                <p>The Journée des Doctorants Indonésiens (JDI) 2026 brings together Indonesian doctoral students in France under the theme "From Research to Resilience: Shaping Indonesia's Future Together." This event serves as an academic discussion forum involving academics, researchers, and stakeholders from France to formulate the application of science and technology according to national needs, while encouraging research and innovation collaboration between French institutions and Indonesian doctoral students.</p>
+            </div>
+        </section>
+
+        <section class="section" id="purpose">
+            <h2 class="section-title">Purpose</h2>
+            <div class="section-content">
+                <p>JDI 2026 aims to achieve the following objectives:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem; line-height: 2;">
+                    <li><strong>Strengthen the Role of Research in Building Indonesia's Resilience:</strong> Provide a platform for Indonesian doctoral students to present and discuss research relevant to addressing global, social, economic, and technological challenges.</li>
+                    <li><strong>Articulate Strategic Problems and Solutions for Indonesia:</strong> Create intellectual space for identifying Indonesia's challenges and voicing research-based ideas, solutions, and recommendations.</li>
+                    <li><strong>Strengthen Multi-Sector Collaboration for Resilient Indonesia:</strong> Encourage synergy between academia, industry, government, and stakeholders in developing knowledge-based solutions.</li>
+                    <li><strong>Build Networks and Solidarity Among Indonesian Doctoral Students:</strong> Foster connection, expand professional networks, and strengthen camaraderie among Indonesian doctoral students in France.</li>
+                    <li><strong>Promote Academic and Mental Resilience:</strong> Provide space to share experiences about doctoral study dynamics, including challenges, failures, and self-doubt, to strengthen personal and collective resilience.</li>
+                    <li><strong>Buils Strategic Contributions from Indonesia's Academic Diaspora:</strong> Encourage active participation as academic diaspora bridging global knowledge with national needs.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="participants">
+            <h2 class="section-title">Participants</h2>
+            <div class="section-content">
+                <p>The main participants are doctoral students from various disciplines in France, as well as representatives from industry and stakeholders interested in collaborating to transform research results into real innovations to support a sustainable future in Indonesia.</p>
+                <p><strong>Format:</strong> The event will be held in hybrid format (both on-site at KBRI Paris and online via Zoom)</p>
+            </div>
+        </section>
+
+        <section class="section" id="agenda">
+            <h2 class="section-title">Agenda</h2>
+            <div class="section-content">
+                <p>The JDI 2026 workshop will feature a 2-day program including panel discussions and doctoral student presentations across 8 thematic areas. The event will be held in hybrid format with parallel sessions in two rooms.</p>
+            </div>
+            
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 2rem 0; text-align: center;">Day 1 - April 2026</h3>
+            <div class="agenda-grid">
+                <div class="agenda-card">
+                    <h3>Opening Ceremony</h3>
+                    <div class="time">09:00 - 09:40 CEST</div>
+                    <p>Indonesian national anthem, coordinator report, speeches from Education and Culture Attaché and Indonesian Ambassador, followed by group photo session.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Panel Discussion 1: CNRS</h3>
+                    <div class="time">09:40 - 11:00 CEST</div>
+                    <p>Keynote from France's National Center for Scientific Research (CNRS) providing academic and research perspectives.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Coffee Break & Cultural Performance</h3>
+                    <div class="time">11:00 - 11:15 CEST</div>
+                    <p>Networking break followed by Indonesian cultural arts performance.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Lunch & Prayer Break</h3>
+                    <div class="time">12:35 - 14:05 CEST</div>
+                    <p>Lunch break and time allocated for prayer.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Student Presentations (Sessions 1-3)</h3>
+                    <div class="time">14:05 - 17:20 CEST</div>
+                    <p>Three consecutive presentation sessions in parallel rooms covering various research topics by Indonesian doctoral students.</p>
+                </div>
+            </div>
+
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 2rem 0; text-align: center;">Day 2 - April 2026</h3>
+            <div class="agenda-grid">
+                <div class="agenda-card">
+                    <h3>Short Opening</h3>
+                    <div class="time">08:45 - 09:00 CEST</div>
+                    <p>Brief opening remarks to commence the second day activities.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Panel Discussion 2: Recruitment Director</h3>
+                    <div class="time">09:00 - 10:30 CEST</div>
+                    <p>Perspectives on professional employment dynamics, competency requirements, and career opportunities for doctoral graduates.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Additional Panel Discussion</h3>
+                    <div class="time">10:45 - 12:15 CEST</div>
+                    <p>Extended discussion session with industry and stakeholder representatives.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Lunch Break</h3>
+                    <div class="time">12:15 - 13:15 CEST</div>
+                    <p>Midday break for lunch and informal networking.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Student Presentations (Sessions 4-5)</h3>
+                    <div class="time">13:15 - 15:15 CEST</div>
+                    <p>Final presentation sessions in parallel rooms featuring doctoral research across multiple disciplines.</p>
+                </div>
+                <div class="agenda-card">
+                    <h3>Closing Ceremony</h3>
+                    <div class="time">15:15 - 15:30 CEST</div>
+                    <p>Closing remarks by organizing committee and Education and Culture Attaché.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="speakers">
+            <h2 class="section-title">Speakers</h2>
+            <div class="section-content">
+                <p>JDI 2026 features distinguished speakers from leading French research and professional institutions:</p>
+                
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.4rem;">Panel 1: Research Perspective</h3>
+                <p><strong>Representative from Centre National de la Recherche Scientifique (CNRS)</strong><br>
+                France's National Center for Scientific Research will provide academic and research perspectives on interdisciplinary collaboration and scientific innovation.</p>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.4rem;">Panel 2: Professional Career Perspective</h3>
+                <p><strong>Recruitment Director from French Professional Sector</strong><br>
+                Insights on professional employment dynamics, competency requirements, and career opportunities available for doctoral graduates in France and internationally.</p>
+
+                <p style="margin-top: 2rem;"><em>These speakers bring valuable perspectives connecting academic research with practical applications and career pathways, enriching the discussion on how doctoral research can contribute to Indonesia's resilient future.</em></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Presentation Themes</h2>
+            <div class="section-content">
+                <p>Doctoral student presentations will be organized across <strong>8 thematic areas</strong> reflecting diverse research fields and Indonesia's development priorities:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Economics & Development</h4>
+                    </div>
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Politics & Governance</h4>
+                    </div>
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Social Sciences</h4>
+                    </div>
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Culture & Arts</h4>
+                    </div>
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Science & Technology</h4>
+                    </div>
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Environment & Sustainability</h4>
+                    </div>
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Education & Human Development</h4>
+                    </div>
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Innovation & Future Technologies</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="essay-cta">
+            <h2>Essay Competition</h2>
+            <p>Participate in our essay competition and contribute your research and ideas!</p>
+            <a href="essay.html" class="essay-btn">View Essay Guidelines</a>
+        </div>
+
+        <div class="team-section" id="team">
+            <h2 class="team-header">Organizing Committee</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h4>Lukman</h4>
+                    <div class="role">Organizer</div>
+                </div>
+                <div class="team-member">
+                    <h4>Benedictus Kent Rachmat</h4>
+                    <div class="role">Organizer</div>
+                </div>
+                <div class="team-member">
+                    <h4>Hawil Abas</h4>
+                    <div class="role">Organizer</div>
+                </div>
+                <div class="team-member">
+                    <h4>Putri Sapira Ibrahim</h4>
+                    <div class="role">Organizer</div>
+                </div>
+                <div class="team-member">
+                    <h4>Rischa Maya Oktavia</h4>
+                    <div class="role">Organizer</div>
+                </div>
+                <div class="team-member">
+                    <h4>Galura Wirautama</h4>
+                    <div class="role">Organizer</div>
+                </div>
+                <div class="team-member">
+                    <h4>Kevin</h4>
+                    <div class="role">Organizer</div>
+                </div>
+                <div class="team-member">
+                    <h4>Nining Asri</h4>
+                    <div class="role">Organizer</div>
+                </div>
+            </div>
+
+            <h2 class="team-header" style="margin-top: 3rem;">In Collaboration With PPI Paris</h2>
+            <div class="team-grid" style="max-width: 600px; margin: 0 auto;">
+                <div class="team-member">
+                    <h4>Sandra</h4>
+                    <div class="role">PPI Paris</div>
+                </div>
+                <div class="team-member">
+                    <h4>Marahalim</h4>
+                    <div class="role">PPI Paris</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 JDI Workshop. All rights reserved.</p>
+        <p>Organized in collaboration with PPI Paris</p>
+    </footer>
 </body>
 </html>
-
