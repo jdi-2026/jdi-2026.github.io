@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Call for Essays - JDI 2026</title>
+    <link rel="icon" type="image/png" href="jdi2026.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -55,16 +56,21 @@
         }
 
         .logo-placeholder {
-            width: 60px;
-            height: 60px;
-            background: var(--accent);
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--dark);
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .site-title {
@@ -366,7 +372,9 @@
     <header>
         <nav>
             <div class="logo-area">
-                <!-- <div class="logo-placeholder">JDI</div> -->
+                <div class="logo-placeholder">
+                    <img src="jdi2026.png" alt="JDI 2026 Logo">
+                </div>
                 <div class="site-title">JDI 2026</div>
             </div>
             <a href="index.html" class="back-btn">← Halaman Utama</a>
