@@ -352,11 +352,18 @@
 
         @media (max-width: 600px) {
             .agenda-table {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             .agenda-table thead th,
             .agenda-table tbody td {
-                padding: 0.7rem 0.8rem;
+                padding: 0.6rem 0.6rem;
+            }
+            .agenda-table td:first-child {
+                min-width: 90px;
+                font-size: 0.75rem;
+            }
+            .agenda-table td:nth-child(2) {
+                min-width: 100px;
             }
         }
 
@@ -511,6 +518,63 @@
             background: #e8c14e;
         }
 
+        /* Quick Navigation */
+        .quick-nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quick-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 1rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .quick-nav-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1.5px solid var(--border);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            background: var(--light);
+        }
+
+        .quick-nav-link:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .quick-nav-inner {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 0.6rem 0.8rem;
+                gap: 0.4rem;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .quick-nav-inner::-webkit-scrollbar {
+                display: none;
+            }
+
+            .quick-nav-link {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+                flex-shrink: 0;
+            }
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -520,54 +584,276 @@
             margin-top: 4rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .site-title {
-                font-size: 1.3rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .agenda-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
         }
 
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* Mobile Overlay Menu */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            header nav {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
+            .hamburger {
+                display: block;
+            }
+
+            header {
+                padding: 0.8rem 0;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+
+            .logo-placeholder {
+                width: 45px;
+                height: 45px;
             }
 
             .site-title {
                 font-size: 1.1rem;
+                letter-spacing: 1px;
             }
 
-            .dropdown-btn {
-                font-size: 0.85rem;
-                padding: 0.35rem 0.5rem;
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                background: linear-gradient(180deg, var(--dark) 0%, var(--primary) 100%);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 5rem 1.5rem 2rem;
+                gap: 0;
+                z-index: 1000;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+                overflow-y: auto;
             }
 
-            nav > div {
-                width: 100%;
+            .nav-links.active {
                 display: flex;
-                gap: 0.5rem;
-                flex-wrap: wrap;
+            }
+
+            .nav-links .dropdown-btn {
+                width: 100%;
+                text-align: left;
+                border: none;
+                border-bottom: 1px solid rgba(255,255,255,0.15);
+                border-radius: 0;
+                padding: 1rem 0.5rem;
+                font-size: 1rem;
+                background: transparent;
+            }
+
+            .nav-links .dropdown {
+                width: 100%;
+            }
+
+            .nav-links .dropdown .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background: rgba(255,255,255,0.1);
+                border-radius: 8px;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links .dropdown.open .dropdown-content {
+                display: block;
+            }
+
+            .nav-links .dropdown:hover .dropdown-content {
+                display: none;
+            }
+
+            .nav-links .dropdown.open:hover .dropdown-content {
+                display: block;
+            }
+
+            .nav-links .dropdown .dropdown-content a {
+                color: white;
+                border-bottom-color: rgba(255,255,255,0.1);
+                padding: 0.8rem 1.2rem;
+            }
+
+            .nav-links .dropdown .dropdown-content a:hover {
+                background: rgba(255,255,255,0.15);
+                color: white;
+                padding-left: 1.5rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .hero-date {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-location {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .section {
+                margin-bottom: 3rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.2rem;
+                padding-bottom: 0.6rem;
+            }
+
+            .section-content {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .agenda-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .agenda-card {
+                padding: 1.2rem;
+            }
+
+            .agenda-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .team-section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+                border-radius: 12px;
+            }
+
+            .team-header {
+                font-size: 1.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .team-member {
+                padding: 1rem;
+            }
+
+            .team-member h4 {
+                font-size: 0.95rem;
+            }
+
+            .team-member .role {
+                font-size: 0.8rem;
+            }
+
+            .submission-section {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .submission-card {
+                padding: 1.5rem 1rem;
+                border-radius: 12px;
+            }
+
+            .submission-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .essay-btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .banner-image {
+                height: 200px;
+                font-size: 1.2rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+                margin-top: 2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.35rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -582,9 +868,14 @@
                 </div>
                 <div class="site-title">JDI 2026</div>
             </div>
-            <div style="display: flex; gap: 1rem; align-items: center;">
-                <a href="essay.html" class="dropdown-btn" style="text-decoration: none; display: inline-block;">📝 Essay Competition</a>
-                <div class="dropdown">
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="essay.html" class="dropdown-btn" style="text-decoration: none; display: inline-block;">Essay Competition</a>
+                <div class="dropdown" onclick="toggleDropdown(this)">
                     <button class="dropdown-btn">JDI Sebelumnya ▾</button>
                     <div class="dropdown-content">
                         <a href="https://sandbox.getindico.io/event/4531/">JDI 2025</a>
@@ -593,6 +884,7 @@
                 </div>
             </div>
         </nav>
+        <div class="mobile-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
     </header>
 
     <section class="hero">
@@ -609,21 +901,14 @@
     </div> -->
 
     <!-- Quick Navigation -->
-    <div style="background: white;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; gap: 2rem; overflow-x: auto; flex-wrap: wrap; justify-content: center;">
-            <a href="#background" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📖 Tentang JDI 2026</a>
-            <a href="#agenda" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📅 Agenda</a>
-            <a href="#subtema" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">🔬 Sub-Tema & Pengelompokan Sesi</a>
-<a href="#team" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">👨‍💼 Panitia Penyelenggara</a>
+    <div class="quick-nav">
+        <div class="quick-nav-inner">
+            <a href="#background" class="quick-nav-link">Tentang JDI 2026</a>
+            <a href="#agenda" class="quick-nav-link">Agenda</a>
+            <a href="#subtema" class="quick-nav-link">Sub-Tema</a>
+            <a href="#team" class="quick-nav-link">Panitia</a>
         </div>
     </div>
-
-    <style>
-        div[style*="position: sticky"] a:hover {
-            background: var(--primary);
-            color: white;
-        }
-    </style>
 
 <div class="container">
     <section class="section" id="background">
@@ -917,5 +1202,45 @@
         <p>&copy; 2026 JDI Workshop. All rights reserved.</p>
         <p>Berkolaborasi dengan PPI Paris</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            const overlay = document.getElementById('menuOverlay');
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function toggleDropdown(el) {
+            if (window.innerWidth <= 768) {
+                el.classList.toggle('open');
+            }
+        }
+
+        // Close menu when clicking a nav link (mobile)
+        document.querySelectorAll('.nav-links a:not(.dropdown-btn)').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Close menu on resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                const nav = document.getElementById('navLinks');
+                const hamburger = document.querySelector('.hamburger');
+                const overlay = document.getElementById('menuOverlay');
+                nav.classList.remove('active');
+                hamburger.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
 </body>
 </html>
