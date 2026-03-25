@@ -288,12 +288,97 @@
             text-align: justify;
         }
 
+        /* Agenda Table */
+        .agenda-table-wrapper {
+            overflow-x: auto;
+            margin-top: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .agenda-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            font-size: 0.95rem;
+        }
+
+        .agenda-table thead th {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.2rem;
+            text-align: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .agenda-table tbody td {
+            padding: 0.9rem 1.2rem;
+            border-bottom: 1px solid #e8e0d4;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .agenda-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .agenda-table tbody tr:hover {
+            background: #faf7f2;
+        }
+
+        .agenda-table tbody tr.break-row {
+            background: #f5f0e8;
+            font-style: italic;
+        }
+
+        .agenda-table tbody tr.break-row:hover {
+            background: #efe9de;
+        }
+
+        .agenda-table td:first-child {
+            white-space: nowrap;
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 130px;
+        }
+
+        .agenda-table td:nth-child(2) {
+            min-width: 180px;
+        }
+
+        @media (max-width: 600px) {
+            .agenda-table {
+                font-size: 0.85rem;
+            }
+            .agenda-table thead th,
+            .agenda-table tbody td {
+                padding: 0.7rem 0.8rem;
+            }
+        }
+
         /* Agenda Grid */
         .agenda-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+        }
+
+        .subtema-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .subtema-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .agenda-card {
@@ -377,21 +462,33 @@
             margin-bottom: 1rem;
         }
 
-        /* Essay CTA */
-        .essay-cta {
+        /* Submission Section */
+        .submission-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .submission-card {
             background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
             color: white;
-            padding: 3rem;
+            padding: 2.5rem 2rem;
             border-radius: 20px;
             text-align: center;
-            margin: 4rem 0;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
-        .essay-cta h2 {
+        .submission-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 1.6rem;
             margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .submission-section {
+                grid-template-columns: 1fr;
+            }
         }
 
         .essay-btn {
@@ -514,11 +611,9 @@
     <!-- Quick Navigation -->
     <div style="background: white;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; gap: 2rem; overflow-x: auto; flex-wrap: wrap; justify-content: center;">
-            <a href="#background" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📖 Latar Belakang & Tujuan</a>
-            <a href="#participants" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">👥 Peserta</a>
+            <a href="#background" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📖 Tentang JDI 2026</a>
             <a href="#agenda" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">📅 Agenda</a>
-            <a href="#presentasi" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">🎤 Tema Presentasi</a>
-            <a href="#subtema" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">🔬 Sub-Tema & Sesi</a>
+            <a href="#subtema" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">🔬 Sub-Tema & Pengelompokan Sesi</a>
 <a href="#team" style="text-decoration: none; color: var(--primary); font-weight: 600; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; white-space: nowrap;">👨‍💼 Panitia Penyelenggara</a>
         </div>
     </div>
@@ -532,11 +627,11 @@
 
 <div class="container">
     <section class="section" id="background">
-        <h2 class="section-title">Latar Belakang & Tujuan</h2>
+        <h2 class="section-title">Tentang JDI 2026</h2>
         <div class="section-content">
-            <p>Indonesia menghadapi tantangan pembangunan yang semakin kompleks — dari krisis iklim, deforestasi, ketimpangan akses kesehatan, hingga disrupsi teknologi. Tantangan ini menuntut tidak hanya keberlanjutan jangka panjang, tetapi juga <strong>ketahanan (resilience)</strong>: kemampuan untuk bertahan, beradaptasi, dan pulih dari berbagai guncangan.</p>
-            <p>Pendidikan doktoral di Prancis memberikan mahasiswa Indonesia akses terhadap pendekatan interdisipliner, teknologi mutakhir, serta kolaborasi internasional yang relevan untuk mendorong solusi bagi Indonesia.</p>
             <p><strong>Journée des Doctorants Indonésiens (JDI) 2026</strong> mempertemukan mahasiswa doktoral Indonesia di Prancis dengan tema <em>"From Research to Resilience: Shaping Indonesia's Future Together."</em> Forum ini melibatkan akademisi, peneliti, dan pemangku kepentingan untuk merumuskan penerapan ilmu pengetahuan dan teknologi sesuai kebutuhan nasional.</p>
+            <p>Peserta utama adalah mahasiswa doktoral dari berbagai disiplin ilmu di Prancis, serta perwakilan dari industri dan pemangku kepentingan yang tertarik untuk berkolaborasi dalam mentransformasikan hasil riset menjadi inovasi nyata guna mendukung masa depan Indonesia yang berkelanjutan.</p>
+            <p><strong>Format:</strong> Acara akan diselenggarakan secara hybrid (luring di KBRI Paris dan daring melalui Zoom)</p>
 
             <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">Tujuan</h3>
             <ul style="margin-left: 2rem; margin-top: 0.5rem; line-height: 2;">
@@ -548,81 +643,100 @@
         </div>
     </section>
 
-    <section class="section" id="participants">
-        <h2 class="section-title">Peserta</h2>
-        <div class="section-content">
-            <p>Peserta utama adalah mahasiswa doktoral dari berbagai disiplin ilmu di Prancis, serta perwakilan dari industri dan pemangku kepentingan yang tertarik untuk berkolaborasi dalam mentransformasikan hasil riset menjadi inovasi nyata guna mendukung masa depan Indonesia yang berkelanjutan.</p>
-            <p><strong>Format:</strong> Acara akan diselenggarakan secara hybrid (luring di KBRI Paris dan daring melalui Zoom)</p>
-        </div>
-    </section>
-
     <section class="section" id="agenda">
         <h2 class="section-title">Agenda</h2>
         <div class="section-content">
-            <p>Workshop JDI 2026 akan menghadirkan program selama 2 hari yang mencakup diskusi panel dan presentasi mahasiswa doktoral dalam 8 bidang tematik. Acara ini diselenggarakan secara hybrid dengan sesi paralel di dua ruangan.</p>
+            <p>Workshop JDI 2026 akan menghadirkan program selama 2 hari yang mencakup diskusi panel dan presentasi mahasiswa doktoral.</p>
         </div>
         
-        <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 2rem 0; text-align: center;">Hari 1 - April 2026</h3>
-        <div class="agenda-grid">
-            <div class="agenda-card">
-                <h3>Upacara Pembukaan</h3>
-                <div class="time">09:00 - 09:40 CEST</div>
-                <p>Lagu kebangsaan Indonesia, laporan koordinator, sambutan dari Atase Pendidikan dan Kebudayaan serta Duta Besar Indonesia, dilanjutkan dengan sesi foto bersama.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Diskusi Panel 1: CNRS</h3>
-                <div class="time">09:40 - 11:00 CEST</div>
-                <p>Pidato utama dari Centre National de la Recherche Scientifique (CNRS) Prancis yang memberikan perspektif akademik dan riset.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Istirahat Kopi</h3>
-                <div class="time">11:00 - 11:15 CEST</div>
-                <p>Waktu jejaring singkat.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Makan Siang & Istirahat Salat</h3>
-                <div class="time">12:35 - 14:05 CEST</div>
-                <p>Waktu istirahat makan siang dan waktu yang dialokasikan untuk salat.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Presentasi Mahasiswa (Sesi 1-3)</h3>
-                <div class="time">14:05 - 17:20 CEST</div>
-                <p>Tiga sesi presentasi berturut-turut di ruangan paralel yang membahas berbagai topik riset oleh mahasiswa doktoral Indonesia.</p>
-            </div>
+        <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem 0; text-align: center;">Hari Pertama – 25 April 2026</h3>
+        <div class="agenda-table-wrapper">
+            <table class="agenda-table">
+                <thead>
+                    <tr>
+                        <th>Waktu (CEST)</th>
+                        <th>Acara</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00 - 09:40</td>
+                        <td><strong>Upacara Pembukaan</strong></td>
+                        <td>Lagu kebangsaan Indonesia, laporan koordinator, sambutan dari Atase Pendidikan dan Kebudayaan serta Duta Besar Indonesia, sesi foto bersama.</td>
+                    </tr>
+                    <tr>
+                        <td>09:40 - 11:00</td>
+                        <td><strong>Diskusi Panel 1</strong></td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr class="break-row">
+                        <td>11:00 - 11:15</td>
+                        <td><strong>Istirahat Kopi</strong></td>
+                        <td>Waktu jejaring singkat.</td>
+                    </tr>
+                    <tr>
+                        <td>11:15 - 12:35</td>
+                        <td><strong>Diskusi Panel 2</strong></td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr class="break-row">
+                        <td>12:35 - 14:05</td>
+                        <td><strong>Makan Siang & Istirahat Salat</strong></td>
+                        <td>Waktu istirahat makan siang dan waktu yang dialokasikan untuk salat.</td>
+                    </tr>
+                    <tr>
+                        <td>14:05 - 17:20</td>
+                        <td><strong>Presentasi Mahasiswa</strong></td>
+                        <td>Presentasi mengenai gagasan ataupun riset oleh mahasiswa Doktoral Indonesia.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 2rem 0; text-align: center;">Hari 2 - April 2026</h3>
-        <div class="agenda-grid">
-            <div class="agenda-card">
-                <h3>Pembukaan Singkat</h3>
-                <div class="time">08:45 - 09:00 CEST</div>
-                <p>Sambutan singkat untuk memulai rangkaian kegiatan hari kedua.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Diskusi Panel 2: Direktur Rekrutmen</h3>
-                <div class="time">09:00 - 10:30 CEST</div>
-                <p>Perspektif mengenai dinamika ketenagakerjaan profesional, kebutuhan kompetensi, dan peluang karier bagi lulusan doktoral.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Diskusi Panel Tambahan</h3>
-                <div class="time">10:45 - 12:15 CEST</div>
-                <p>Sesi diskusi lanjutan bersama perwakilan industri dan pemangku kepentingan.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Istirahat Makan Siang</h3>
-                <div class="time">12:15 - 13:15 CEST</div>
-                <p>Waktu istirahat siang untuk makan dan jejaring informal.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Presentasi Mahasiswa (Sesi 4-5)</h3>
-                <div class="time">13:15 - 15:15 CEST</div>
-                <p>Sesi presentasi terakhir di ruangan paralel yang menampilkan riset doktoral dari berbagai disiplin ilmu.</p>
-            </div>
-            <div class="agenda-card">
-                <h3>Upacara Penutupan</h3>
-                <div class="time">15:15 - 15:30 CEST</div>
-                <p>Sambutan penutup dari panitia penyelenggara dan Atase Pendidikan dan Kebudayaan.</p>
-            </div>
+        <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem 0; text-align: center;">Hari Kedua – 26 April 2026</h3>
+        <div class="agenda-table-wrapper">
+            <table class="agenda-table">
+                <thead>
+                    <tr>
+                        <th>Waktu (CEST)</th>
+                        <th>Acara</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>08:45 - 09:00</td>
+                        <td><strong>Pembukaan Singkat</strong></td>
+                        <td>Sambutan singkat untuk memulai rangkaian kegiatan hari kedua.</td>
+                    </tr>
+                    <tr>
+                        <td>09:00 - 10:30</td>
+                        <td><strong>Diskusi Panel 3</strong></td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td>10:45 - 12:15</td>
+                        <td><strong>Diskusi Panel Tambahan</strong></td>
+                        <td>Presentasi mengenai gagasan ataupun riset oleh mahasiswa Doktoral Indonesia.</td>
+                    </tr>
+                    <tr class="break-row">
+                        <td>12:15 - 13:15</td>
+                        <td><strong>Istirahat Makan Siang</strong></td>
+                        <td>Waktu istirahat siang untuk makan dan jejaring informal.</td>
+                    </tr>
+                    <tr>
+                        <td>13:15 - 15:15</td>
+                        <td><strong>Presentasi Mahasiswa</strong></td>
+                        <td>Presentasi mengenai gagasan ataupun riset oleh mahasiswa Doktoral Indonesia.</td>
+                    </tr>
+                    <tr>
+                        <td>15:15 - 16:45</td>
+                        <td><strong>Meeting Komunitas S3 & Penutupan</strong></td>
+                        <td>Presentasi mengenai gagasan ataupun riset oleh mahasiswa Doktoral Indonesia.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 <!-- 
@@ -643,152 +757,43 @@
         </div>
     </section> -->
 
-    <section class="section" id="presentasi">
-        <h2 class="section-title">Tema Presentasi</h2>
-        <div class="section-content">
-            <p>Presentasi mahasiswa doktoral akan diselenggarakan dalam <strong>8 bidang tematik</strong> yang mencerminkan keberagaman bidang riset dan prioritas pembangunan Indonesia:</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Ekonomi & Pembangunan</h4>
-                </div>
-                <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Politik & Tata Kelola</h4>
-                </div>
-                <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Ilmu Sosial</h4>
-                </div>
-                <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Budaya & Seni</h4>
-                </div>
-                <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Sains & Teknologi</h4>
-                </div>
-                <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Lingkungan & Keberlanjutan</h4>
-                </div>
-                <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Pendidikan & Pembangunan Manusia</h4>
-                </div>
-                <div style="background: var(--light); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Inovasi & Teknologi Masa Depan</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section" id="subtema">
         <h2 class="section-title">Sub-Tema & Pengelompokan Sesi</h2>
         <div class="section-content">
-            <p>Resilience bukan sekadar "bertahan hidup" — ini tentang kemampuan sistem (ekologi, sosial, ekonomi, institusional) untuk menyerap guncangan, beradaptasi, dan bertransformasi menjadi lebih kuat. JDI 2026 mengangkat <strong>tiga sub-tema utama</strong> berbasis resilience yang menjadi landasan diskusi dan presentasi seluruh peserta:</p>
+            <p>Resilience bukan sekadar "bertahan hidup" — ini tentang kemampuan sistem untuk menyerap guncangan, beradaptasi, dan bertransformasi menjadi lebih kuat. JDI 2026 mengangkat <strong>tiga sub-tema utama</strong> berbasis resilience yang menjadi landasan diskusi dan presentasi seluruh peserta:</p>
         </div>
 
-        <!-- 3 Resilience Sub-themes -->
-        <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem;">
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--accent);">
-                <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.4rem; margin-bottom: 0.5rem;">1. Ecological Resilience — Menjaga Bumi untuk Generasi Mendatang</h3>
-                <p style="font-style: italic; color: var(--accent); margin-bottom: 1rem; font-weight: 600;">"From Ocean to Policy: Building Ecological Resilience"</p>
-                <p><strong>Pertanyaan Kunci:</strong> How do ecosystems sustain themselves, and how can research help Indonesia protect and restore natural systems under pressure?</p>
-                <p style="margin-top: 0.8rem;"><strong>Fokus:</strong> Ketahanan ekosistem laut & darat, biodiversitas, perubahan iklim, manajemen sumber daya alam.</p>
-                <p style="margin-top: 0.8rem;"><strong>Relevan untuk riset:</strong> Marine ecosystem (ikan pelagis, rumpon, BHA, mangrove, polusi laut), paleoklimatologi & paleoseanografi, pemulihan hutan Kalimantan pasca logging, water decontamination (PFAS).</p>
+        <div class="subtema-grid">
+            <div class="agenda-card" style="border-left: 4px solid #2e7d32;">
+                <div class="time" style="background: #2e7d32; color: white;">Sub-Tema 1</div>
+                <h3 style="font-size: 1.2rem;">Ecological Resilience</h3>
+                <p style="font-weight: 600; color: var(--primary); margin-bottom: 0.5rem;">Memanfaatkan dan Menjaga Bumi untuk Generasi Mendatang</p>
+                <p style="font-style: italic; color: var(--accent); font-size: 0.9rem;">"From Ocean to Policy: Building Ecological Resilience"</p>
             </div>
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--accent);">
-                <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.4rem; margin-bottom: 0.5rem;">2. Technological Resilience — Inovasi sebagai Infrastruktur Ketahanan</h3>
-                <p style="font-style: italic; color: var(--accent); margin-bottom: 1rem; font-weight: 600;">"Engineering the Unbreakable: Technology for Resilient Systems"</p>
-                <p><strong>Pertanyaan Kunci:</strong> How can cutting-edge science and technology become the backbone of Indonesia's ability to detect, respond, and adapt to challenges?</p>
-                <p style="margin-top: 0.8rem;"><strong>Fokus:</strong> Teknologi sensor & monitoring, AI, komunikasi, sistem otomasi, komputasi & pemodelan.</p>
-                <p style="margin-top: 0.8rem;"><strong>Relevan untuk riset:</strong> Sensor gas & fiber refractometer, AI untuk deteksi perilaku ikan, Integrated Spectrometer & Photonic-Plasmonic chip, 5G NR-V2X, mmWave exposure, SWARM drone, VR asinkron, Hidden Markov models, Semiparametric models.</p>
+            <div class="agenda-card" style="border-left: 4px solid #1565c0;">
+                <div class="time" style="background: #1565c0; color: white;">Sub-Tema 2</div>
+                <h3 style="font-size: 1.2rem;">Science & Technological Resilience</h3>
+                <p style="font-weight: 600; color: var(--primary); margin-bottom: 0.5rem;">Innovasi sebagai Infrastruktur Ketahanan</p>
+                <p style="font-style: italic; color: var(--accent); font-size: 0.9rem;">"Engineering the Unbreakable: Technology for Resilient Systems"</p>
             </div>
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--accent);">
-                <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.4rem; margin-bottom: 0.5rem;">3. Social & Institutional Resilience — Manusia, Komunitas, dan Sistem yang Tangguh</h3>
-                <p style="font-style: italic; color: var(--accent); margin-bottom: 1rem; font-weight: 600;">"People, Power, and Persistence: Social Resilience in Action"</p>
-                <p><strong>Pertanyaan Kunci:</strong> How do societies, cultures, and institutions absorb shocks and reorganize toward better futures?</p>
-                <p style="margin-top: 0.8rem;"><strong>Fokus:</strong> Psikologi sosial, tata kelola, kesehatan masyarakat, pendidikan, identitas budaya, hukum.</p>
-                <p style="margin-top: 0.8rem;"><strong>Relevan untuk riset:</strong> Psikologi transportasi & mobilitas aktif, identitas nasional & memori kolektif, clinical trial data-sharing, Dynamic Resource Scheduling (IGD), pest management & ketahanan pangan, studi filologi Jawa Kuno (hukum adat), cultural commodification.</p>
-            </div>
-        </div>
-
-        <!-- Pengelompokan Sesi Presentasi -->
-        <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem 0; text-align: center;">Pengelompokan Sesi Presentasi</h3>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-            <div class="agenda-card">
-                <div class="time" style="background: #2e7d32; color: white;">Ecological Resilience I</div>
-                <h3>Sesi 1: Marine & Aquatic Systems</h3>
-                <ul style="margin-left: 1.2rem; margin-top: 0.8rem; line-height: 1.9; font-size: 0.95rem;">
-                    <li>Penggunaan AI untuk mendeteksi dan mengklasifikasi behaviour ikan</li>
-                    <li>Indikator biodiversitas ikan pelagis di rumpon</li>
-                    <li>Rumpon tuna</li>
-                    <li>The Influence of River Freshwater on the Indonesian Seas dynamic</li>
-                    <li>Study of Benthic Harmful Algae (BHAs) in tropical coral reef ecosystems</li>
-                    <li>Autonomous conservation in Indonesia</li>
-                    <li>Women's knowledge and roles in community based mangrove management</li>
-                    <li>Marine Pollution</li>
-                    <li>Marine molecular</li>
-                </ul>
-            </div>
-            <div class="agenda-card">
-                <div class="time" style="background: #2e7d32; color: white;">Ecological Resilience II</div>
-                <h3>Sesi 2: Terrestrial, Climate & Agriculture</h3>
-                <ul style="margin-left: 1.2rem; margin-top: 0.8rem; line-height: 1.9; font-size: 0.95rem;">
-                    <li>Paleoclimatology and Paleoceanography</li>
-                    <li>Forest recovery post logging in Kalimantan, Indonesia</li>
-                    <li>Water decontamination using plasma-liquid interactions for PFAS treatment</li>
-                    <li>Integrated Pest Management on Coffee Berry Borer in Indonesia</li>
-                    <li>Semiparametric Multinomial Logit Model to Predict Rice Growth Phases</li>
-                    <li>Simulations atomistiques de la minéralisation du CO2 sur des surfaces d'oxyde de magnésium</li>
-                </ul>
-            </div>
-            <div class="agenda-card">
-                <div class="time" style="background: #1565c0; color: white;">Technological Resilience I</div>
-                <h3>Sesi 3: Sensing, Photonics & Detection</h3>
-                <ul style="margin-left: 1.2rem; margin-top: 0.8rem; line-height: 1.9; font-size: 0.95rem;">
-                    <li>Design of microstructured fiber refractometer for dissolved methane gas detection</li>
-                    <li>Pembuatan Sensor Gas untuk Deteksi Polusi Udara</li>
-                    <li>Integrated Spectrometer</li>
-                    <li>Integrated Photonic-Plasmonic chip for biosensing</li>
-                    <li>Cavity magnonics</li>
-                    <li>Pengukuran konsentrasi hydrogen pada Eurofer97 melalui picosecond LIBS</li>
-                    <li>Biokimia</li>
-                </ul>
-            </div>
-            <div class="agenda-card">
-                <div class="time" style="background: #1565c0; color: white;">Technological Resilience II</div>
-                <h3>Sesi 4: AI, Computation & Connectivity</h3>
-                <ul style="margin-left: 1.2rem; margin-top: 0.8rem; line-height: 1.9; font-size: 0.95rem;">
-                    <li>Hybrid Solutions for 5G mmWave Human Exposure Assessment</li>
-                    <li>Resource Allocation for 5G NR-V2X Communication</li>
-                    <li>SWARM drone dengan familiaritas visual</li>
-                    <li>Asynchronous collaboration in VR</li>
-                    <li>Hidden Markov models</li>
-                    <li>Parametric Design</li>
-                    <li>Shared control in train remote operation</li>
-                </ul>
-            </div>
-            <div class="agenda-card">
-                <div class="time" style="background: #6a1b9a; color: white;">Social Resilience I</div>
-                <h3>Sesi 5: Psychology, Culture & Identity</h3>
-                <ul style="margin-left: 1.2rem; margin-top: 0.8rem; line-height: 1.9; font-size: 0.95rem;">
-                    <li>National identity, collective memory, collective future thinking, cross-cultural psychology</li>
-                    <li>Cultural Commodification as Popular Culture in Global Market</li>
-                    <li>Transport Psychology; active mobility</li>
-                    <li>Philological Study of the Old Javanese Law Texts Sārasamuccaya and Kuṭāramānava</li>
-                </ul>
-            </div>
-            <div class="agenda-card">
-                <div class="time" style="background: #6a1b9a; color: white;">Social Resilience II</div>
-                <h3>Sesi 6: Health, Governance & Crisis Response</h3>
-                <ul style="margin-left: 1.2rem; margin-top: 0.8rem; line-height: 1.9; font-size: 0.95rem;">
-                    <li>Towards understanding patient's perspective on clinical trial data-sharing</li>
-                    <li>Dynamic Resource Scheduling for Emergency Department</li>
-                    <li>Virology structural</li>
-                </ul>
+            <div class="agenda-card" style="border-left: 4px solid #6a1b9a;">
+                <div class="time" style="background: #6a1b9a; color: white;">Sub-Tema 3</div>
+                <h3 style="font-size: 1.2rem;">Social & Institutional Resilience</h3>
+                <p style="font-weight: 600; color: var(--primary); margin-bottom: 0.5rem;">Manusia, Komunitas, dan Sistem yang Tangguh</p>
+                <p style="font-style: italic; color: var(--accent); font-size: 0.9rem;">"People, Power, and Persistence: Social Resilience in Action"</p>
             </div>
         </div>
     </section>
 
-    <div class="essay-cta">
-        <h2>Submission</h2>
-        <a href="https://forms.gle/dWmcwDGk6SCP6mVe9" class="essay-btn">Link Google Form</a>
+    <div class="submission-section">
+        <div class="submission-card">
+            <h3>Formulir Pendaftaran</h3>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_sHhUonjQg6RUPeXNJbJvcdQvc8r8X5Op9w9WZiyhUiOrJA/viewform" class="essay-btn" target="_blank">Link Google Form</a>
+        </div>
+        <div class="submission-card">
+            <h3>Mengunggah Materi Presentasi</h3>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1T_4WjhKVL5dh4NaBuZgMiALiIY5J2vkTgkTwWEaW5A8vpA/viewform" class="essay-btn" target="_blank">Link Google Form</a>
+        </div>
     </div>
 
     <section class="section" id="transportasi">
